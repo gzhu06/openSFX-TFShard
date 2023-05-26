@@ -3,17 +3,20 @@
 # #1 find overlaps between freesound and {clotho test/val, fsd50k eval, us8k, esc50k} 
 # #2 find overlaps between audioset unbalanced train and {audiocaps test/val, vgg test}
 ###
+import sys
+sys.path.append('../')
 from glob import glob
 from tqdm import tqdm
 import csv, os, json, shutil
 from collections import defaultdict
+from params import *
 
-black_list_json = "/storageHDD/ge/audio_sfx_wav/blacklist.json"
-raw_audiopath = '/storageHDD/ge/audio_sfx_raw'
+black_list_json = os.path.join(AUDIOTEXT_DATA_PATH, 'blacklist.json')
+raw_audiopath = RAW_AUDIOTEXT_DATA_PATH
 
 # audioset family
 vgg_filelist = os.path.join(raw_audiopath, 'vggsound', 'vggsound_test.json')
-audiocaps_folder = '/home/ge/dataset/audiocaps/dataset'
+audiocaps_folder = AUDIOCAPS_REPO
 audiocaps_split = ['test.csv', 'val.csv']
 
 # freesound family

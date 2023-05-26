@@ -1,13 +1,14 @@
 # openSFX-TFShard
-A codebase for open source SFX data TFrecord sharding
-
+A codebase for open source sound effects (SFX) TFrecord sharding data preparation. It is initially used for CLAP model training on TPUs. 
 
 # Datasets
 
 ## Training dataset
 | Name    |Duration |Number of Samples   | Caption | Shards |
 |---------|--------|--------------------|--------- |--------- |
-| Freesound (AIR) |X hrs  | 513061 |((raw text, synthetic text)|512|
+| Audioset  |X hrs  | XX  | synthetic text|512|
+| ACAV2M  |X hrs  | XX  |synthetic text |512|
+| Freesound (AIR) |X hrs  | 513061 |(raw text, synthetic text)|512|
 | Epidemic Sound  |X hrs   |75645 |text| 128|
 | BBC Sound Effects<br />(Full, SoundDescriptions)|X hrs|33042|text|256|
 | Audiostock  |X hrs  | 9837|text  |32|
