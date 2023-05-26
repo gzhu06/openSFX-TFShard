@@ -23,14 +23,14 @@ us8k_filelist =  os.path.join(raw_audiopath, 'us8k/UrbanSound8K/metadata/UrbanSo
 esc50_filelist = os.path.join(raw_audiopath, 'esc50.csv')
 fsd50keval_filelist = os.path.join(raw_audiopath, 'eval_clips_info_FSD50K.json')
 
-def load_item_from_meta(meta_file, item_order):
+def load_item_from_meta(meta_file, item_order, heading_row=0):
     
     overlap_list = []
     assert meta_file.endswith('.csv')
     with open(meta_file, newline='', errors='ignore') as csvfile:
         dataset_rows = csv.reader(csvfile, delimiter=',')
         for i, row in enumerate(dataset_rows):
-            if i == 0:
+            if i <= heading_row:
                 continue
 
             if row[item_order] == 'Not found':
@@ -54,9 +54,9 @@ if __name__ == '__main__':
     ## b. vggsound test
     with open(vgg_filelist, 'r') as f:
         vgg_dict = json.load(f)
-        f.close()
     
-    overlap_ids['audioset'] += [vggfile.split('+')[0] for vggfile in list(vgg_dict.keys())]
+    vgglist = [vggfile.split('+')[0] for vggfile in list(vgg_dict.keys())]
+    overlap_ids['audioset'] += vgglist
     
     # 2. Freesound overlaps
     ## a. clotho eval val file list with freesound
@@ -76,7 +76,6 @@ if __name__ == '__main__':
     ## d. fsd50k eval
     with open(fsd50keval_filelist, 'r') as f:
         fsd50keval_dict = json.load(f)
-        f.close()
         
     overlap_ids['freesound'] += list(fsd50keval_dict.keys())
     

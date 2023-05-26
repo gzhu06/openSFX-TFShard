@@ -1,0 +1,1 @@
+AUDIOTEXT_DATA_PATH = '/storageHDD/ge/audio_sfx_wav/'
